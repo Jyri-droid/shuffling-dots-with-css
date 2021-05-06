@@ -3,93 +3,13 @@
 
 <head>
 	<title>Animated dots</title>
-
-	<style>
-		
-		*, body {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		body {
-			margin: 1rem;
-			background-color: black;
-		}
-
-		.container {
-			position: relative;
-			width: 100%;
-		}
-
-		.container > div  {
-			position: absolute;
-			width: 100%;
-			background-color: transparent;
-			transition: padding 1s;
-		}
-
-		.dot {
-			height: 5rem;
-			width: 5rem;
-			margin-left: -2.5rem;
-			border-radius: 50%;
-		}
-
-		button {
-			padding: 0.5rem;
-			margin: 0.5rem;
-			border: none;
-			border-radius: 5px;
-			background-color: lightgreen;
-		}
-
-	</style>
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-<button onclick="shuffleDots()">Shuffle dots</button>
-<div id="container" class="container"></div>
+	<button onclick="shuffleDots()">Shuffle dots</button>
+	<div id="container" class="container"></div>
 
-<script>
-
-var names = ["JK", "RL", "TK", "MV", "JL", "AA"];
-var colors = ["lightsalmon", "lightseagreen", "lightskyblue", "lightgoldenrodyellow", "lightgrey", "lightpink"];
-var subContainers = [];
-var dots = [];
-
-// Create dots
-for (i = 0; i < names.length; i++) {
-	// Create a container for each dot
-	subContainers[i] = document.createElement("div");
-	subContainers[i].style.paddingLeft = countPadding(names, i);
-	document.getElementById("container").appendChild(subContainers[i]);
-	// Create dots inside their containers
-	dots[i] = document.createElement("div");
-	dots[i].classList.add("dot");
-	dots[i].style.backgroundColor = colors[i];
-	subContainers[i].appendChild(dots[i]);
-}
-
-function shuffleDots() {
-	// Shuffle order in random
-	for (i = 0; i < subContainers.length; i++) {
-		var randomSwitch = Math.floor(Math.random() * (subContainers.length - i)) + i;
-		[[subContainers[i]],subContainers[randomSwitch]] = [[subContainers[randomSwitch]],subContainers[i]];
-	}
-	// Reposition dots
-	for (j = 0; j < subContainers.length; j++) {
-		subContainers[j].style.paddingLeft = countPadding(names, j);
-	}
-}
-
-// Count left padding for subcontainers
-function countPadding(array, positionInArray) {
-	var step = 100 / array.length;
-	return positionInArray * step + (step / 2) + "%";
-}
-
-</script>
+	<script src="scripts.js"></script>
 </body>
-
 </html>
