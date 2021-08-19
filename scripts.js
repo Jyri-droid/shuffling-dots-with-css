@@ -1,11 +1,12 @@
-var colors = ["lightsalmon", "lightseagreen", "lightskyblue", "lightgoldenrodyellow", "lightgrey", "lightpink"];
-var subContainers = [];
-var dots = [];
+let colors = ["lightsalmon", "lightseagreen", "lightskyblue", "lightgoldenrodyellow", "lightgrey", "lightpink"];
+let subContainers = [];
+let dots = [];
 
 // Create dots
 for (i = 0; i < colors.length; i++) {
-	// Create a container for each dot
+	// Create a subcontainer for each dot
 	subContainers[i] = document.createElement("div");
+	subContainers[i].style.border = "4px solid black";
 	subContainers[i].style.paddingLeft = countPadding(colors, i);
 	document.getElementById("container").appendChild(subContainers[i]);
 	// Create dots inside their containers
@@ -17,18 +18,37 @@ for (i = 0; i < colors.length; i++) {
 
 function shuffleDots() {
 	// Shuffle order in random
-	for (i = 0; i < subContainers.length; i++) {
-		var randomSwitch = Math.floor(Math.random() * (subContainers.length - i)) + i;
-		[[subContainers[i]],subContainers[randomSwitch]] = [[subContainers[randomSwitch]],subContainers[i]];
+	for (j = 0; j < subContainers.length; j++) {
+		let randomSwitch = Math.floor(Math.random() * (subContainers.length - j)) + j;
+		[[subContainers[j]],subContainers[randomSwitch]] = [[subContainers[randomSwitch]],subContainers[j]];
 	}
 	// Reposition dots
-	for (j = 0; j < subContainers.length; j++) {
-		subContainers[j].style.paddingLeft = countPadding(colors, j);
+	for (k = 0; k < subContainers.length; k++) {
+		subContainers[k].style.paddingLeft = countPadding(colors, k);
 	}
 }
 
 // Count left padding for subcontainers
 function countPadding(array, positionInArray) {
-	var step = 100 / array.length;
+	let step = 100 / array.length;
 	return positionInArray * step + (step / 2) + "%";
+}
+
+function layerVisibility() {
+	var button = document.getElementById("buttonLayer");
+	if (subContainers[0].style.borderColor !== "transparent") {
+		button.innerHTML = "Show layers";
+		for (l of subContainers) {
+			l.style.borderColor = "transparent";
+			l.style.marginTop = "0";
+		}
+	} else {
+		let distance = 0;
+		button.innerHTML = "Hide layers";
+		for (l of subContainers) {
+			l.style.borderColor = l.firstChild.style.backgroundColor;
+			l.style.marginTop = distance + "px";
+			distance = distance + subContainers[0].offsetHeight;
+		}
+	}
 }
