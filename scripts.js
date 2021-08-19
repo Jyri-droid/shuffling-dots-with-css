@@ -34,6 +34,7 @@ function countPadding(array, positionInArray) {
 	return positionInArray * step + (step / 2) + "%";
 }
 
+// Show or hide dots' container divs
 function layerVisibility() {
 	let button = document.getElementById("buttonLayer");
 	if (subContainers[0].style.borderColor !== "transparent") {
