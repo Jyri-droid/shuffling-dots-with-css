@@ -36,19 +36,19 @@ function countPadding(array, positionInArray) {
 
 function layerVisibility() {
 	let button = document.getElementById("buttonLayer");
-	if (subContainers[0].style.borderColor !== "black") {
-		button.innerHTML = "Show layers";
-		for (l of subContainers) {
-			l.style.borderColor = "black";
-			l.style.marginTop = "0";
-		}
-	} else {
+	if (subContainers[0].style.borderColor === "black") {
 		let distance = 0;
 		button.innerHTML = "Hide layers";
 		for (l of subContainers) {
 			l.style.borderColor = l.firstChild.style.backgroundColor;
 			l.style.marginTop = distance + "px";
 			distance = distance + subContainers[0].offsetHeight;
+		}
+	} else {
+		button.innerHTML = "Show layers";
+		for (l of subContainers) {
+			l.style.borderColor = "black";
+			l.style.marginTop = "0";
 		}
 	}
 }
