@@ -36,10 +36,10 @@ function countPadding(array, positionInArray) {
 
 function layerVisibility() {
 	let button = document.getElementById("buttonLayer");
-	if (subContainers[0].style.borderColor !== "black") {
+	if (subContainers[0].style.borderColor !== "transparent") {
 		button.innerHTML = "Show layers";
 		for (l of subContainers) {
-			l.style.borderColor = "black";
+			l.style.borderColor = "transparent";
 			l.style.marginTop = "0";
 		}
 	} else {
