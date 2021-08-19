@@ -6,7 +6,8 @@ let dots = [];
 for (i = 0; i < colors.length; i++) {
 	// Create a subcontainer for each dot
 	subContainers[i] = document.createElement("div");
-	subContainers[i].style.border = "4px solid black";
+	subContainers[i].style.border = "4px solid";
+	subContainers[i].style.borderColor = "black";
 	subContainers[i].style.paddingLeft = countPadding(colors, i);
 	document.getElementById("container").appendChild(subContainers[i]);
 	// Create dots inside their containers
