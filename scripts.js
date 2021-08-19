@@ -6,8 +6,7 @@ let dots = [];
 for (i = 0; i < colors.length; i++) {
 	// Create a subcontainer for each dot
 	subContainers[i] = document.createElement("div");
-	subContainers[i].style.border = "4px solid";
-	subContainers[i].style.borderColor = "black";
+	subContainers[i].style.border = "4px solid black";
 	subContainers[i].style.paddingLeft = countPadding(colors, i);
 	document.getElementById("container").appendChild(subContainers[i]);
 	// Create dots inside their containers
@@ -37,7 +36,7 @@ function countPadding(array, positionInArray) {
 
 function layerVisibility() {
 	let button = document.getElementById("buttonLayer");
-	if (subContainers[0].style.borderColor === "black") {
+	if (subContainers[0].style.borderColor == "black") {
 		let distance = 0;
 		button.innerHTML = "Hide layers";
 		for (l of subContainers) {
