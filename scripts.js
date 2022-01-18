@@ -33,10 +33,19 @@ function shuffleDots() {
 	}
 }
 
+// Return 0 if number is even, 1 if number is odd
+function isOdd(number) {
+	return number % 2;
+}
+
 // Count left padding for dotContainers
 function countPadding(array, positionInArray) {
-	let step = 100 / array.length;
-	return positionInArray * step + (step / 2) + "%";
+	const step = 100 / array.length;
+	// Count left padding of exact middle of position
+	let leftPadding = positionInArray * step + (step / 2);
+	// Move dot 5% based on being odd or even
+	leftPadding = leftPadding + 5 - isOdd(positionInArray) * 10 + "%";
+	return leftPadding;
 }
 
 // Show or hide dot container divs
