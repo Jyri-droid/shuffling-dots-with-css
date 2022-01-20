@@ -43,7 +43,7 @@ function countPadding(array, positionInArray) {
 	const step = 100 / array.length;
 	// Count left padding of exact middle of position
 	let leftPadding = positionInArray * step + (step / 2);
-	// Move dot 5% based on being odd or even
+	// Move dot left or right 5%, based on being odd or even
 	leftPadding = leftPadding + 5 - isOdd(positionInArray) * 10 + "%";
 	return leftPadding;
 }
